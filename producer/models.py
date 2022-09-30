@@ -2,13 +2,13 @@ from django.db import models
 from django_countries.fields import CountryField
 
 
-class Auto_show(models.Model):
-    """ Класс автосалона """
+class Producer(models.Model):
+    """ Класс поставщиков """
 
-    name = models.CharField(max_length=200, blank=True, verbose_name="Название автосалона")
-    country = CountryField(blank=True, verbose_name="Страна")
+    name = models.CharField(max_length=200, verbose_name="Название поставщика")
+    country = CountryField(verbose_name="Страна")
     year_foundation = models.IntegerField(blank=True, verbose_name='Год основания')
-    balance = models.IntegerField(default=0, verbose_name='Баланс автосалона, USD')
+    balance = models.IntegerField(default=0, verbose_name='Баланс поставщика, USD')
 
     created = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
@@ -16,8 +16,8 @@ class Auto_show(models.Model):
 
     class Meta:
         ordering = ['name']
-        verbose_name = 'Автосалон'
-        verbose_name_plural = 'Автосалоны'
+        verbose_name = 'Поставщик'
+        verbose_name_plural = 'Поставщики'
 
     def __str__(self):
         return self.name
