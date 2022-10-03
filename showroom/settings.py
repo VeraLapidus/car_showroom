@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'auto_show',
     'car',
     'customer',
+    'deals',
     'producer',
 
 ]

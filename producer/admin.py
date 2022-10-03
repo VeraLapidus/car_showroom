@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from producer.models import Producer
+
+admin.site.register(Producer)

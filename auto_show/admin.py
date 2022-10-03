@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from auto_show.models import Auto_show
+
+admin.site.register(Auto_show)
