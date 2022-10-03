@@ -17,9 +17,8 @@ class Customer(models.Model):
     def full_name(self):
         """ Фамилия и имя покупателя"""
 
-        full_name = self.last_name+self.first_name
+        full_name = self.last_name + self.first_name
         return full_name
-
 
     class Meta:
         ordering = ['full_name']
@@ -28,4 +27,3 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.full_name
-

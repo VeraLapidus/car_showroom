@@ -9,6 +9,7 @@ class Producer(models.Model):
     country = CountryField(verbose_name="Страна")
     year_foundation = models.IntegerField(blank=True, verbose_name='Год основания')
     balance = models.IntegerField(default=0, verbose_name='Баланс поставщика, USD')
+    amount_of_clients = models.IntegerField(blank=True, verbose_name='Количество покупателей')
 
     created = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")

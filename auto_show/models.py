@@ -9,6 +9,8 @@ class Auto_show(models.Model):
     country = CountryField(blank=True, verbose_name="Страна")
     year_foundation = models.IntegerField(blank=True, verbose_name='Год основания')
     balance = models.IntegerField(default=0, verbose_name='Баланс автосалона, USD')
+    wish_cars = models.CharField(max_length=500, blank=True, verbose_name="Автомобили к приобретению")
+    list_producers = models.CharField(max_length=500, blank=True, verbose_name="Список поставщиков")
 
     created = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
