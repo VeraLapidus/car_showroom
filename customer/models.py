@@ -21,7 +21,7 @@ class Customer(models.Model):
         return full_name
 
     class Meta:
-        ordering = ['full_name']
+        # ordering = ['full_name']
         verbose_name = 'ФИ покупателя'
         verbose_name_plural = 'ФИ покупателей'
 

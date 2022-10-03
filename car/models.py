@@ -1,5 +1,9 @@
 from django.db import models
 
+from auto_show.models import Auto_show
+from producer.models import Producer
+from customer.models import Customer
+
 
 class Car(models.Model):
     """Класс автомобилей"""
@@ -21,9 +25,9 @@ class Car(models.Model):
     price_discount = models.IntegerField(blank=True, null=True, verbose_name='Цена со скидкой, USD')
     price_action = models.IntegerField(blank=True, null=True, verbose_name='Цена по акции, USD')
 
-    producers = models.ManyToManyField('Producer', verbose_name='Производитель')
-    auto_shows = models.ManyToManyField('Auto_show', verbose_name='Автосалон')
-    customers = models.ManyToManyField('Customer', verbose_name='Покупатель')
+    producers = models.ManyToManyField(Producer, verbose_name='Производитель')
+    auto_shows = models.ManyToManyField(Auto_show, verbose_name='Автосалон')
+    customers = models.ManyToManyField(Customer, verbose_name='Покупатель')
 
     created = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
@@ -35,14 +39,10 @@ class Car(models.Model):
         short_name = self.brand + self.model + str(self.year_launch)
         return short_name
 
-    # def get_price_discount(self):
-    #     """Расчитать стоимость со скидкой"""
-    #
-    #     price = int(self.price * (100 - self.price_discount) / 100)
-    #     return price
+
 
     class Meta:
-        ordering = ['short_name']
+        # ordering = ['short_name']
         verbose_name = 'Автомобиль'
         verbose_name_plural = 'Автомобили'
 
@@ -59,10 +59,10 @@ class DealList(models.Model):
     participants = models.CharField(max_length=40, choices=PARTICIPANTS, verbose_name='Стороны сделки')
     price = models.IntegerField(verbose_name='Сумма сделки, USD')
 
-    auto_shows = models.ForeignKey('Auto_show', on_delete=models.CASCADE, blank=True, null=True,
+    auto_shows = models.ForeignKey(Auto_show, on_delete=models.CASCADE, blank=True, null=True,
                                    verbose_name='Автосалон')
-    producers = models.ForeignKey('Producer', on_delete=models.CASCADE, blank=True, null=True, verbose_name="Продавец")
-    customers = models.ForeignKey('Сustomer', on_delete=models.CASCADE, blank=True, null=True,
+    producers = models.ForeignKey(Producer, on_delete=models.CASCADE, blank=True, null=True, verbose_name="Продавец")
+    customers = models.ForeignKey(Customer, on_delete=models.CASCADE, blank=True, null=True,
                                   verbose_name='Покупатель')
     cars = models.ForeignKey('Car', on_delete=models.CASCADE, verbose_name='Авто')
 
@@ -106,8 +106,8 @@ class Action(models.Model):
     description = models.TextField(max_length=500, blank=True)
 
     cars = models.ManyToManyField('Car', verbose_name='Автомобиль')
-    auto_shows = models.ManyToManyField('Auto_show', verbose_name='Автосалон')
-    producers = models.ManyToManyField('Producer', verbose_name='Поставщик')
+    auto_shows = models.ManyToManyField(Auto_show, verbose_name='Автосалон')
+    producers = models.ManyToManyField(Producer, verbose_name='Поставщик')
 
     is_active = models.BooleanField(default=True, verbose_name='Активен')
     created = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
