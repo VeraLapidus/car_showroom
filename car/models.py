@@ -7,8 +7,8 @@ from customer.models import Customer
 class Car(models.Model):
     """ Класс автомобилей """
 
-    name = models.CharField(max_length=200, verbose_name="Бренд, модель, год автомобиля")
-    color = models.CharField(max_length=200, verbose_name="Цвет автомобиля")
+    name = models.CharField(max_length=200, blank=True, verbose_name="Бренд, модель, год автомобиля")
+    color = models.CharField(max_length=200, blank=True, verbose_name="Цвет автомобиля")
     description = models.TextField(blank=True, verbose_name='Описание')
 
     created = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")

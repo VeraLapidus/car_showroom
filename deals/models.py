@@ -41,8 +41,8 @@ class Discount(models.Model):
 
     name = models.CharField(max_length=50, verbose_name='Имя скидки')
     amount_discount = models.IntegerField(verbose_name='Размер скидки в %')
-    quantity_cars_max = models.IntegerField(verbose_name='Max количество авто для применения скидки')
-    quantity_cars_min = models.IntegerField(verbose_name='Min количество авто для применения скидки')
+    quantity_cars_max = models.IntegerField(blank=True, null=True, verbose_name='Max количество авто для применения скидки')
+    quantity_cars_min = models.IntegerField(blank=True, null=True, verbose_name='Min количество авто для применения скидки')
 
     date_start = models.DateTimeField(verbose_name='Дата начала скидки (dd.mm.yyyy 00:00:00)')
     date_finish = models.DateTimeField(verbose_name='Дата окончания скидки (dd.mm.yyyy 00:00:00)')
